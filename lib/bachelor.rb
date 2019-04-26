@@ -1,7 +1,7 @@
 require 'pry'
 
 def get_first_name_of_season_winner(data, season)
-   data[season].each do |key_data|
+   data[season].each do |key_data| #data[season]
       key_data.each do |key, value|
        if value == "Winner"
          full_name = key_data["name"]
@@ -27,17 +27,18 @@ def get_contestant_name(data, occupation)
 
 def count_contestants_by_hometown(data, hometown)
   counter = 0
-  data.each do |season, season_array|
-    season_array.each do |key_data|
-      key_data.each do |key, value|
-      if value == hometown
-         counter += 1
+    data.each do |season, contestant_array|
+      contestant_array.each do |key_data| #hash
+      #key_data[:hometown]  #if theres a key in that hash = :hometown,
+        if key_data["hometown"] == hometown  #access the hometown key in hash & compare to arg. #then increase counter -- key should be turned into string so pay attn to how its def.
+         counter += 1 #increases by 1 everytime
         end
       end
     end
   return counter
-  end
 end
+
+
 
 def get_occupation(data, hometown)
   data.each do |season, season_array|
@@ -52,5 +53,13 @@ def get_occupation(data, hometown)
 end
 
 def get_average_age_for_season(data, season)
-  # code here
+age = 0
+counter = 0
+  data[season].each do |key_data|
+      #if key_data["age"] == age
+        counter += 1
+        age += key_data["age"].to_i
+      end
+    average = (key_data["age"/counter).round
+  return average
 end
