@@ -60,6 +60,6 @@ counter = 0
         counter += 1
         age += key_data["age"].to_i
       end
-    average = (key_data["age"/counter).round
+    average = (age/counter.to_f).round
   return average
 end
